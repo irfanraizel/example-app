@@ -28,28 +28,38 @@ class About
     ];
 
     public static function all() {
-        return self::$about;
+        return collect(self::$about);
     }
 
     public static function title($slug) {
-        $titles = self::$about;
-        $title = [];
-        foreach($titles as $t){
-            if($t['slug'] == $slug) {
-                $title = $t;
-            }
-        }
-        return $title['title'];
+        // ?Cara Pertama
+        // $titles = self::$about;
+        // $title = [];
+        // foreach($titles as $t){
+        //     if($t['slug'] == $slug) {
+        //         $title = $t;
+        //     }
+        // }
+        // return $title['title'];
+
+        // ?Cara Kedua
+        $titles = static::all();
+        return $titles->firstWhere('slug', $slug);
     }
 
     public static function find($slug) {
-        $items = self::$about;
-        $item = [];
-        foreach($items as $it){
-            if($it['slug'] == $slug) {
-                $item = $it;
-            }
-        }
-        return $item;
+        // ?Cara Pertama
+        // $items = self::$about;
+        // $item = [];
+        // foreach($items as $it){
+        //     if($it['slug'] == $slug) {
+        //         $item = $it;
+        //     }
+        // }
+        // return $item;
+
+        // ?Cara Kedua
+        $item = static::all();
+        return $item->firstWhere('slug', $slug);
     }
 }

@@ -26,18 +26,23 @@ class Post
 
     public static function all()
     {
-        return self::$blog_posts;
+        return collect(self::$blog_posts);
     }
 
     public static function find($slug)
     {
-        $posts = self::$blog_posts;
-        $post = [];
-        foreach($posts as $p) {
-            if($p['slug'] === $slug){
-                $post = $p;
-            }
-        }
-        return $post;        
+        // ?Cara Pertama
+        // $posts = self::$blog_posts;
+        // $post = [];
+        // foreach($posts as $p) {
+        //     if($p['slug'] === $slug){
+        //         $post = $p;
+        //     }
+        // }
+        // return $post;
+        
+        // ?Cara Kedua
+        $posts = static::all();
+        return $posts->firstWhere('slug', $slug);
     }
 }

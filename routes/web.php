@@ -47,7 +47,7 @@ Route::get('posts/{slug}', function ($slug) {
 // Halaman Single About
 Route::get('about/{slug}', function ($slug) {
     return view('aboutItem', [
-        "title" => About::title($slug),
+        "title" => About::title($slug)['title'],
         "aboutItem" => About::find($slug)
     ]);
 });
