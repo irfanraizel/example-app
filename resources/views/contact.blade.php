@@ -11,5 +11,4 @@
             <p>Address : {{ $detail['address'] }}</p>
         </div>
     </div>
-    
 @endsection

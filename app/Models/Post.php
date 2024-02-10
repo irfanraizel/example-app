@@ -2,47 +2,16 @@
 
 namespace App\Models;
 
-// ?belum dibutuhkan karena belum menggunakan database
-// use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Post
+class Post extends Model
 {
-    private static $blog_posts = [
+    use HasFactory;
 
-        [
-            "title" => "Judul Post Pertama",
-            "slug" => "judul-post-pertama",
-            "author" => "Irfan Raizel Tampan",
-            "body" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat quaerat illum eius odio possimus temporibus perferendis libero reiciendis perspiciatis. Error quis ipsum ex id reprehenderit odit et labore sed quidem nulla quia fuga laudantium ullam eaque, provident at totam voluptatum. Aspernatur, cumque! Beatae provident dolores ex distinctio fuga nemo eos dolor, pariatur illum ratione modi nobis incidunt culpa delectus ipsam corrupti ipsa esse architecto in voluptatum? Neque quis eveniet culpa sequi pariatur, dolorem, tempora voluptatibus esse earum voluptates recusandae ducimus?"
-        ],    [
-            "title" => "Judul Post Kedua",
-            "slug" => "judul-post-kedua",
-            "author" => "Apis Ramadhan MantapBetul",
-            "body" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat quaerat illum eius odio possimus temporibus perferendis libero reiciendis perspiciatis. Error quis ipsum ex id reprehenderit odit et labore sed quidem nulla quia fuga laudantium ullam eaque, provident at totam voluptatum. Aspernatur, cumque! Beatae provident dolores ex distinctio fuga nemo eos dolor, pariatur illum ratione modi nobis incidunt culpa delectus ipsam corrupti ipsa esse architecto in voluptatum? Neque quis eveniet culpa sequi pariatur, dolorem, tempora voluptatibus esse earum voluptates recusandae ducimus? Error quis ipsum ex id reprehenderit odit et labore sed quidem nulla quia fuga laudantium ullam eaque, provident at totam voluptatum. Aspernatur, cumque! Beatae provident dolores ex distinctio fuga nemo eos dolor, pariatur illum ratione modi nobis incidunt culpa delectus ipsam corrupti ipsa esse architecto in voluptatum? Neque quis eveniet culpa sequi pariatur, dolorem, tempora voluptatibus esse earum voluptates recusandae ducimus?"
-        ]
+    // !$fillable isi nya boleh diisi dari method create()
+    //protected $fillable = ['title', 'excerpt', 'body'];
 
-    ];
-
-    public static function all()
-    {
-        return collect(self::$blog_posts);
-    }
-
-    public static function find($slug)
-    {
-        // ?Cara Pertama
-        // $posts = self::$blog_posts;
-        // $post = [];
-        // foreach($posts as $p) {
-        //     if($p['slug'] === $slug){
-        //         $post = $p;
-        //     }
-        // }
-        // return $post;
-        
-        // ?Cara Kedua
-        $posts = static::all();
-        return $posts->firstWhere('slug', $slug);
-    }
+    // !$guarded isi nya tidak boleh diisi dari method create()
+    protected $guarded = ['id'];
 }
