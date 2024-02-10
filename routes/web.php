@@ -31,7 +31,7 @@ Route::get('/posts', [PostController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
 
 // Halaman Single Post
-Route::get('posts/{slug}', [PostController::class, 'show']);
+Route::get('posts/{id:slug}', [PostController::class, 'show']);
 
 // Halaman Single About
 Route::get('about/{slug}', [AboutController::class, 'aboutSingle']);

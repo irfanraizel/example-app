@@ -3,7 +3,7 @@
 @section('container')
     <article>
         <h2>{{ $post->title }}</h2>
-        <h5>{{ $post->author }}</h5>
+        <h5>{{ $post->excerpt }}</h5>
         {!! $post->body !!}
     </article>
 
